@@ -1,2 +1,2 @@
 # The-Bite-of-Two-22
-The year 2026, hasn't been easy for the teachers at TMU. A mysterious case of murders have began occurring around campus and its up to you to discover the culprit. Will you be able to solve this case or fail and become one of the victims?
+The year 2026 hasn't been easy for the teachers at TMU. A series of mysterious murders have begun occurring around campus, and students worry as their friends begin disappearing left and right. Take the role of one of three intrepid (and whimsical) students, as they attempt to crack the case... or die trying.
