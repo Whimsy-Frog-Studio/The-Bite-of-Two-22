@@ -100,6 +100,36 @@ class Player {
 
   UpdateSprite() 
   {
+    if (this.playerYDirection == -1) {
+      if (this.playerSelected = "Kyla") 
+      {
+        this.sprite.image = 'Sprites/Player/Kyla_Up.png';
+      } 
+      else if (this.playerSelected = "Jacky") 
+      {
+        this.sprite.image = 'Sprites/Player/Jacky_Up.png';
+      } 
+      else if (this.playerSelected = "Noah") 
+      {
+        this.sprite.image = 'Sprites/Player/Noah_Up.png';
+      }
+    }
+
+    if (this.playerYDirection == 1) {
+      if (this.playerSelected = "Kyla") 
+      {
+        this.sprite.image = 'Sprites/Player/Kyla_Down.png';
+      } 
+      else if (this.playerSelected = "Jacky") 
+      {
+        this.sprite.image = 'Sprites/Player/Jacky_Down.png';
+      } 
+      else if (this.playerSelected = "Noah") 
+      {
+        this.sprite.image = 'Sprites/Player/Noah_Down.png';
+      }
+    }
+
     if (this.playerXDirection == 0 && this.playerYDirection == 0) 
     {
       if (this.playerSelected = "Kyla") 
@@ -143,36 +173,6 @@ class Player {
       else if (this.playerSelected = "Noah") 
       {
         this.sprite.image = 'Sprites/Player/Noah_Right.png';
-      }
-    }
-
-    if (this.playerYDirection == -1) {
-      if (this.playerSelected = "Kyla") 
-      {
-        this.sprite.image = 'Sprites/Player/Kyla_Up.png';
-      } 
-      else if (this.playerSelected = "Jacky") 
-      {
-        this.sprite.image = 'Sprites/Player/Jacky_Up.png';
-      } 
-      else if (this.playerSelected = "Noah") 
-      {
-        this.sprite.image = 'Sprites/Player/Noah_Up.png';
-      }
-    }
-
-    if (this.playerYDirection == 1) {
-      if (this.playerSelected = "Kyla") 
-      {
-        this.sprite.image = 'Sprites/Player/Kyla_Down.png';
-      } 
-      else if (this.playerSelected = "Jacky") 
-      {
-        this.sprite.image = 'Sprites/Player/Jacky_Down.png';
-      } 
-      else if (this.playerSelected = "Noah") 
-      {
-        this.sprite.image = 'Sprites/Player/Noah_Down.png';
       }
     }
   }
