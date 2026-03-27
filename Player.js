@@ -1,6 +1,6 @@
 
-class Player {
-
+class Player 
+{
   constructor(x, y) 
   {
     this.sprite = new Sprite(x,y,64,64);
