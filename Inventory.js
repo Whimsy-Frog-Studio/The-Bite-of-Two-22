@@ -9,6 +9,7 @@ class Inventory
 
         this.sprite = new Sprite(this.x,this.y,64,64);
         this.sprite.text = slot;
+        this.sprite.collider = 'none';
     }
 
     RemoveItem() 
