@@ -19,4 +19,18 @@ function draw()
   background(255);
   player.Move();
   player.UpdateSprite();
+  
+  for (let i = 0; i < inventorySlots.length; i++) 
+  {
+    inventorySlots[i].UpdateSlot(inventorySlots);
+  }
+}
+
+function keyPressed() 
+{
+  if (kb.presses('1')) 
+  {
+    
+    inventorySlots[0].IsSelected(true);
+  }
 }
