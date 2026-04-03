@@ -26,7 +26,7 @@ class Player
       if (this.sprite.y > 842) 
       {
         this.stageController.updateStage("Gould Street");
-        this.sprite.y = 20;
+        this.sprite.y = 0;
       }
     }
 
@@ -34,7 +34,7 @@ class Player
       if (this.sprite.y < 0) 
       {
         this.stageController.updateStage("RCC Lounge");
-        this.sprite.y = 822;
+        this.sprite.y = 842;
       }
     }
   }
