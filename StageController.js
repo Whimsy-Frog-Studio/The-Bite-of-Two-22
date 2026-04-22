@@ -1,13 +1,21 @@
 class StageController 
 {
-    constructor(stage) 
+    constructor(initialStage, canvasWidth, canvasHeight) 
     {
-        this.stage = stage;
+        this.stage = initialStage;
+        this.stageSprite = new Sprite(canvasWidth / 2, canvasHeight / 2);
+        this.stageSprite.collider = 'none';
+        this.stageSprite.layer = 0;
     }
     
     updateStage(stage) 
     {
         this.stage = stage;
+    }
+
+    moveStageSprite(velX, velY) {
+        this.stageSprite.vel.x = -velX;
+        this.stageSprite.vel.y = -velY;
     }
 
 }

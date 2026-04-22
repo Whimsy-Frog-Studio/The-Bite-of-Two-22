@@ -7,12 +7,16 @@ class Player
 
     this.playerXDirection = 0;
     this.playerYDirection = 0;
+    this.targetVelX = 0;
+    this.targetVelY = 0;
     this.playerIsMoving = false;
+    this.sprite.layer = 10;
 
     this.lastXKey = '';
     this.lastYKey = '';
 
     this.playerSelected = "Kyla";
+    
   }
 
   SetStageController(stageController) 
@@ -22,21 +26,6 @@ class Player
 
   UpdateStageController() 
   {
-    if (this.stageController.stage == "RCC Lounge") {
-      if (this.sprite.y > 842) 
-      {
-        this.stageController.updateStage("Gould Street");
-        this.sprite.y = 0;
-      }
-    }
-
-    if (this.stageController.stage == "Gould Street") {
-      if (this.sprite.y < 0) 
-      {
-        this.stageController.updateStage("RCC Lounge");
-        this.sprite.y = 842;
-      }
-    }
   }
 
   Move() 
@@ -120,14 +109,19 @@ class Player
       this.playerYDirection /= magnitude;
     }
     
-    this.sprite.vel.x += this.playerXDirection * acceleration;
-    this.sprite.vel.y += this.playerYDirection * acceleration;
+    this.targetVelX += this.playerXDirection * acceleration;
+    this.targetVelY += this.playerYDirection * acceleration;
 
-    if (this.playerXDirection == 0) this.sprite.vel.x *= friction;
-    if (this.playerYDirection == 0) this.sprite.vel.y *= friction;
+    this.stageController.moveStageSprite(this.targetVelX, this.targetVelY);
 
-    this.sprite.vel.x = constrain(this.sprite.vel.x, -maxSpeed, maxSpeed);
-    this.sprite.vel.y = constrain(this.sprite.vel.y, -maxSpeed, maxSpeed);
+    if (this.playerXDirection == 0) this.targetVelX *= friction;
+    if (this.playerYDirection == 0) this.targetVelY *= friction;
+
+    this.targetVelX = constrain(this.targetVelX, -maxSpeed, maxSpeed);
+    this.targetVelY = constrain(this.targetVelY, -maxSpeed, maxSpeed);
+
+    this.sprite.vel.x = 0;
+    this.sprite.vel.y = 0;
   }
 
   UpdateSprite() 

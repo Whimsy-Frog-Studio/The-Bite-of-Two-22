@@ -6,7 +6,7 @@ function setup()
   new Canvas(1528, 842);
   player = new Player(764,421);
 
-  stageController = new StageController("RCC Lounge");
+  stageController = new StageController("RCC Lounge", width, height);
   player.SetStageController(stageController);
 
   /* for (let i = 0; i < 8; i++)
