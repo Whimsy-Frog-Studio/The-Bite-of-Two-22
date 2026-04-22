@@ -1,4 +1,4 @@
-class Inventory 
+/* class Inventory 
 {
     constructor(slot, x, y) 
     {
@@ -55,3 +55,4 @@ class Inventory
         }
     }
 }
+*/
