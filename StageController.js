@@ -4,8 +4,13 @@ class StageController
     {
         this.stage = initialStage;
         this.stageSprite = new Sprite(canvasWidth / 2, canvasHeight / 2);
+        this.stageSprite.image = `Sprites/ Map/${this.stage}.png`;
         this.stageSprite.collider = 'none';
-        this.stageSprite.layer = 0;
+        this.stageSprite.layer = 1;
+
+        this.collisionSprite = new Sprite(canvasWidth / 2, canvasHeight / 2);
+        this.collisionSprite.collider = 'static';
+        this.collisionSprite.layer = 0;
     }
     
     UpdateStage(stage) 
@@ -17,6 +22,8 @@ class StageController
     {
         this.stageSprite.vel.x = -velX;
         this.stageSprite.vel.y = -velY;
+        this.collisionSprite.vel.x = -velX;
+        this.collisionSprite.vel.y = -velY;
     }
 
 }
