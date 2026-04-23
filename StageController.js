@@ -4,12 +4,13 @@ class StageController
     {
         this.stage = initialStage;
         this.stageSprite = new Sprite(canvasWidth / 2, canvasHeight / 2);
-        this.stageSprite.image = `Sprites/ Map/${this.stage}.png`;
+        this.stageSprite.image = `Sprites/Map/${this.stage}.png`;
         this.stageSprite.collider = 'none';
         this.stageSprite.layer = 1;
 
         this.collisionSprite = new Sprite(canvasWidth / 2, canvasHeight / 2);
-        this.collisionSprite.collider = 'static';
+        this.collisionSprite.collider = 'kinematic';
+        this.collisionSprite.image = `Sprites/Map/Collision/${this.stage}.png`;
         this.collisionSprite.layer = 0;
     }
     
