@@ -6,7 +6,8 @@ function setup()
   new Canvas(1528, 842);
   player = new Player(764,421);
 
-  stageController = new StageController("RCC Lounge", width, height);
+  stageController = new StageController("RCC_First_Floor", width, height);
+  
   player.SetStageController(stageController);
 
   /* for (let i = 0; i < 8; i++)
@@ -21,7 +22,7 @@ function setup()
 
 function draw() 
 {
-  background(255);
+  clear();
   player.Move();
   player.UpdateSprite();
   player.UpdateStageController();
@@ -33,7 +34,7 @@ function draw()
   */
 
   fill(0);
-  text(player.sprite.y, 20, 40);
+  text(player.targetVelY, 20, 40);
   text(stageController.stage, 20, 20);
 }
 
