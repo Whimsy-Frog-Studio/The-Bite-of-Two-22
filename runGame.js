@@ -7,15 +7,20 @@ let lastYKey = '';
 
 // Sprite Costume Variables
 let idleAniK;
+let walkLAniK;
+let walkRAniK;
 let map;
-let mapAni; 
+let floor1; 
 
 let gameState = "mainMenu";
+let level = 1;
 
 function preload() 
 {
-  idleAniK = loadAnimation(imageSequence('Sprites/Kyla_Idle', 4));
-  mapAni = loadAnimation('Sprites/Map/RCC First Floor.png');
+  idleAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_Idle', 4));
+  walkLAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_WalkLeft', 5));
+  walkRAniK = loadAnimation(imageSequence('Sprites/Kyla/Kyla_WalkRight', 5));
+  floor1 = loadImage('Sprites/Map/RCC First Floor.png');
 }
 
 function setup() 
@@ -24,13 +29,16 @@ function setup()
   
   // Setting Up Player Sprite
   player = new Sprite();
-  player.addAni(idleAniK);
+  player.addAni('idle', idleAniK);
+  player.addAni('walkLeft', walkLAniK);
+  player.addAni('walkRight', walkRAniK);
   player.rotationLock = true;
   player.debug = true;
 
-  map = new Sprite();
-  map.addAni(mapAni);
+  map = new Sprite(0,0, 9600, 5400);
+  map.image = floor1;
   map.collider = 'none';
+  map.debug = true;
 
   player.layer = 10;
   map.layer = 1;
@@ -44,6 +52,7 @@ function setup()
 function draw() 
 {
   background(255);
+  stroke(0);
   if (gameState === "mainMenu") mainMenu();
   if (gameState === "introScene") introScene();
   if (gameState === "runGame") runGame();
@@ -54,17 +63,20 @@ function mainMenu()
 {
   background(255)
   if (mouse.presses()) {
-    gameState = "runGame";
+    gameState = "introScene";
   }
 }
 
 function introScene() 
 {
-
+  if (frameCount > 120) {
+    gameState = "runGame";
+  }
 }
 
 function runGame() 
 {
+  clear();
   mouse.visible = false;
   
   playerMovement();
@@ -73,9 +85,13 @@ function runGame()
   camera.x = player.x;
   camera.y = player.y;
 
+  if (level == 1) {
+    map.image = floor1;
+  }
+
   camera.on();
 
-  player.ani.frameDelay = 10;
+
 
   allSprites.update();
   allSprites.draw();
@@ -173,6 +189,24 @@ function playerMovement()
 
   player.vel.x = constrain(player.vel.x, -maxSpeed, maxSpeed);
   player.vel.y = constrain(player.vel.y, -maxSpeed, maxSpeed);
+
+  if (playerXDirection == 0 && playerYDirection == 0) 
+  {
+    player.ani.frameDelay = 10;
+    player.ani = 'idle';
+  }
+
+  if (playerXDirection == -1)
+  {
+    player.ani.frameDelay = 8;
+    player.ani = 'walkLeft';
+  }
+
+  if (playerXDirection == 1)
+  {
+    player.ani.frameDelay = 8;
+    player.ani = 'walkRight';
+  }
 }
 
 function imageSequence(prefix, numFrames, extension=".png") 
