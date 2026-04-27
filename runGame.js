@@ -191,6 +191,13 @@ function runGame()
   allSprites.update();
   allSprites.draw();
   camera.off();
+
+  if (convoStep === 0) {
+    text("[E] to Interact with Stan", 20, 60);
+  } else {
+    text("[Space] to Continue Conversation", 20, 60);
+  }
+  
   updateClock();
   handleRelayDialogue();
 }
@@ -307,7 +314,7 @@ function updateClock()
   {
     interactNum = 0;
   }
-  image(clock[interactNum ],0,0);
+  image(clock[interactNum ],1278,10);
 }
 
 function updateLevel() 
